@@ -1,0 +1,7 @@
+[user]
+	name = pozdnyakov-as
+	email = pozdnyakov-as@gis.idm
+[color]
+	ui = always
+[alias]
+    pretty-log = log --oneline --decorate --graph --all
