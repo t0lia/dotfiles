@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+cd ~/sources/config
+# vim
+tmux new-session -s dev -n editor -d
+tmux split-window -h -p 33 -t dev
+tmux send-keys -t dev:1.1 'vim' C-m
+tmux send-keys -t dev:1.2 'echo hello' C-m
+# git
+tmux new-window -n git -t dev
+tmux split-window -h -p 50 -t dev
+tmux send-keys -t dev:2.1 'git status' C-m
+tmux send-keys -t dev:2.2 'watch --color git pretty-log --color' C-m
+#
+tmux select-window -t dev:1.2
+tmux attach -t dev
