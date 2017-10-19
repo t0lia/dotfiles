@@ -1,0 +1,49 @@
+      Hotkey			IDE											Vim	
+
+IDE   Ctrl+2			Send to Right								~ repeat some cmd
+IDE   Ctrl+Shift+2		Toggle Bookmark 2							~ repeat some cmd
+IDE   Ctrl+Shift+6		Toggle Bookmark 6							~ repeat some cmd
+IDE   Ctrl+A			Select All									increase number
+IDE   Ctrl+B			Source Editor								up 1 page
+IDE   Ctrl+C			Copy										~ stop current shell cmd
+VIM   Ctrl+D			Duplicate line								down 1/2 page
+IDE   Ctrl+E			Recent files								line down
+IDE   Ctrl+F			Find...										down 1 page
+IDE   Ctrl+G			Line/Column...								~ show file name in dock
+IDE   Ctrl+H			Base on This Function						~ backspace symbol
+IDE	  Ctrl+I			Implement Methods							forward
+IDE   Ctrl+M			Commit Message History						~ line break symbol
+IDE   Ctrl+N			New Folder...								~ ctrlN plugin
+IDE   Ctrl+O			Override/implement method					backward			
+IDE   Ctrl+P			Show/Hide path text							~ ctrlP plugin
+IDE   Ctrl+Q			Quick JavaDoc								~ disable scroll lock
+VIM	  Ctrl+R			Replace...									redo
+IDE   Ctrl+S			Save All									~ enable scroll lock
+IDE   Ctrl+T			Update Project								~ go to previous tag
+VIM   Ctrl+U			Super Method								up 1/2 page	
+IDE   Ctrl+V			Paste										visual mode
+IDE   Ctrl+W			Extend Selection							~ windown actions button
+IDE   Ctrl+X			Cut											decrease number
+IDE   Ctrl+Y			Delete Selected Rows						line up
+IDE   Ctrl+Open 		Bracket	Move Caret to Code Block Start		~ unused stuff
+IDE   Ctrl+Close 		Bracket	Move Caret to Code Block End		~ unused stuff 
+
+
+Ctrl+I 						forward
+Ctrl+O 						backward
+Alt+J 						next method
+Alt+K 						prev method
+
+F11							fullscreen
+Alt+M 						maven projects
+Alt+D						database
+Alt+G						vcs operation popup
+Alt+X						annotate
+========================
+
+
+Ctrl+I	-> Alt+I		Implement Methods
+Ctrl+O  -> Alt+O		Override/implement method
+Ctrl+U  -> Alt+U		Super Method
+Ctrl+R	-> Alt+R		Replace
+
