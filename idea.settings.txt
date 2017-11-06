@@ -1,4 +1,4 @@
-      Hotkey			IDE											Vim	
+      Hotkey			IDE											Vim
 
 IDE   Ctrl+2			Send to Right								~ repeat some cmd
 IDE   Ctrl+Shift+2		Toggle Bookmark 2							~ repeat some cmd
@@ -35,6 +35,7 @@ Alt+J 						next method
 Alt+K 						prev method
 
 F11							fullscreen
+F11							distraction free mode
 Alt+M 						maven projects
 Alt+D						database
 Alt+G						vcs operation popup
