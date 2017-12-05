@@ -1,6 +1,16 @@
 [user]
 	name = pozdnyakov-as
 	email = Pozdnyakov-AS@gaz-is.ru
+[commit]
+    template = .gitmessage
+[core]
+	editor = vim
+	pager = less
+    #excludesfile = .idea
+#[merge]
+#    tool = vimdiff 
+#[diff]
+#    external = vimdiff 
 [color]
 	ui = always
 [alias]
