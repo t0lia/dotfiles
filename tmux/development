@@ -1,0 +1,17 @@
+#!/bin/bash
+# idm
+
+tmux has-session -t dev
+if [ $? != 0 ]
+then
+    tmux new-session -s dev -n project -d
+    tmux send-keys -t dev 'cd ~/sources/project' C-m
+
+    # docker
+    tmux new-window -n docker -t dev
+    tmux send-keys -t dev:2 'cd ~/sources/docker' C-m
+
+    #
+    tmux select-window -t dev:1
+fi
+tmux attach -t dev
