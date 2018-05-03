@@ -1,12 +1,12 @@
 [user]
-	name = pozdnyakov-as
-	email = Pozdnyakov-AS@gaz-is.ru
+	name = bigtheta
+	email = bigtheta.org@gmail.com
 [commit]
-    template = .gitmessage
+	template = /home/t0lia/.gitmessage
 [core]
 	editor = vim
 	pager = less
-    excludesfile = .gitignore
+	excludesfile = /home/t0lia/.gitignore
 #[merge]
 #    tool = vimdiff 
 #[diff]
