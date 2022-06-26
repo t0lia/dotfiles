@@ -1,8 +1,8 @@
 # Dotfiles
 
 ## Initial setup
-```sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
-```brew install zsh-autosuggestions```
+- ```sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"```
+- ```brew install zsh-autosuggestions```
 
 ## Oh My Zsh Themes
 
@@ -12,7 +12,8 @@
 - arrow
 
 ## Aliases 
-[aliases](https://www.thorsten-hans.com/5-types-of-zsh-aliases#global-aliases)
+[thorsten-hans.com/5-types-of-zsh-aliases#global-aliases](https://www.thorsten-hans.com/5-types-of-zsh-aliases#global-aliases)
 
 ## SSH setup
-[setup](https://austincloud.guru/2020/04/09/cleaning-up-ssh-config/)
+[austincloud.guru/2020/04/09/cleaning-up-ssh-config](https://austincloud.guru/2020/04/09/cleaning-up-ssh-config/)
+[www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix](https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/)
