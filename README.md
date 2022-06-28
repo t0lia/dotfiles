@@ -17,3 +17,7 @@
 ## SSH setup
 - [austincloud.guru/2020/04/09/cleaning-up-ssh-config](https://austincloud.guru/2020/04/09/cleaning-up-ssh-config/)
 - [www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix](https://www.cyberciti.biz/faq/create-ssh-config-file-on-linux-unix/)
+- [www.ssh.com/academy/ssh/copy-id](https://www.ssh.com/academy/ssh/copy-id)
+
+## Bash
+  https://github.com/fliptheweb/bash-shortcuts-cheat-sheet
