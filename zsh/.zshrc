@@ -1,8 +1,10 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/binary:$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
+export PATH=$HOME/Library/Python/3.11/lib/python/site-packages:$HOME/Library/Python/3.11/lib/python/site-packages:$HOME/.pyenv/bin:/opt/homebrew/bin:$HOME/binary:$HOME/bin:/usr/local/bin:/usr/local/opt/python/libexec/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+
+export JAVA_HOME="/Users/apozdniakov/Library/Java/JavaVirtualMachines/corretto-21.0.1/Contents/Home"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,7 +74,7 @@ ZSH_THEME="arrow"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git z history aliases dotenv httpie)
 
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -102,3 +104,14 @@ zstyle ':completion:*' completer _expand_alias _complete _ignored
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+[ -s "/Users/apozdniakov/.web3j/source.sh" ] && source "/Users/apozdniakov/.web3j/source.sh"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
+# >>> zoxide init >>>
+eval "$(zoxide init --cmd cd zsh)"
+

@@ -261,3 +261,54 @@ alias agal='ansible-galaxy list'
 alias agalog='ansible-galaxy login'
 alias agar='ansible-galaxy remove'
 alias agas='ansible-galaxy search'
+
+# Find command aliases for Zsh
+alias ffn='find . -type f -name' # Find Files by Name
+alias fdn='find . -type d -name' # Find Directories by Name
+alias ffc='find . -type f | xargs grep -il' # Find Files Containing Text
+alias ffd='find . -type f -name | xargs rm' # Find and Delete Files by Name (Use with caution!)
+alias ffp='find . -type f -perm' # Find Files by Permission
+alias ffm='find . -type f -mtime' # Find Files Modified in the Last N Days
+alias ffl='find . -type f -size +' # Find Files Larger Than a Certain Size
+alias ffe='find . -type f -exec' # Find and Execute a Command on Found Files
+
+alias als='alias | grep -i ' # Find and Execute a Command on Found Files
+
+# Gradle
+alias gw='./gradlew'                    # Run gradlew in the current directory
+alias gwb='./gradlew build'             # Build the project
+alias gwt='./gradlew test'              # Run tests
+alias gwc='./gradlew clean'             # Clean the project
+alias gwda='./gradlew assembleDebug'    # Assemble debug build
+alias gwra='./gradlew assembleRelease'  # Assemble release build
+# Gradle Tasks and Dependencies
+alias gwtree='./gradlew dependencies'   # Display the dependency tree
+alias gwtasks='./gradlew tasks'         # List all available tasks
+# Gradle Daemon Control
+alias gwdstart='./gradlew --daemon'     # Start the Gradle daemon
+alias gwdstop='./gradlew --stop'        # Stop the Gradle daemon
+# Custom Gradle Tasks
+alias gwr='gw run'                      # Run the application
+alias gwbootRun='gw bootRun'            # Run a Spring Boot application
+# Performance and Debugging
+alias gwinfo='./gradlew --info'         # Run with info logging
+alias gwdebug='./gradlew --debug'       # Run with debug logging
+alias gwprofile='./gradlew --profile'   # Run with profiling
+# Gradle Wrapper Update
+alias gwup='./gradlew wrapper --gradle-version'  # Update the Gradle wrapper to a specific version
+
+# tmux 
+alias t='tmux'
+# Starting a new tmux session
+alias tn='tmux new-session'
+# Attaching to an existing tmux session
+alias ta='tmux attach -t'
+# Detaching from the current tmux session
+alias td='tmux detach'
+# Listing all tmux sessions
+alias tl='tmux list-sessions'
+# Killing a tmux session
+alias tk='tmux kill-session -t'
+# Switching to another tmux session
+alias ts='tmux switch -t'
+

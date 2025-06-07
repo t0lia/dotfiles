@@ -1,12 +1,13 @@
 [user]
-	name = bigtheta
-	email = bigtheta.org@gmail.com
+	name = apozdniakov
+	email = t0lia.gm@gmail.com
 [commit]
 	template = /home/t0lia/.gitmessage
 [core]
 	editor = vim
-	pager = less
+	pager = delta
 	excludesfile = /home/t0lia/.gitignore
+	autocrlf = input
 #[merge]
 #    tool = vimdiff 
 #[diff]
@@ -15,3 +16,7 @@
 	ui = always
 [alias]
     pretty-log = log --oneline --decorate --graph --all
+[http]
+	postBuffer = 524288000
+[interactive]
+	diffFilter = delta --color-only
