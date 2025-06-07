@@ -103,6 +103,16 @@ nnoremap <leader>bp :bprevious<CR>  " Previous buffer
 " Quick save
 nnoremap <leader>w :w<CR>
 
+" File search with FZF
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>F :GFiles<CR>
+
+" Search in files with FZF + Ripgrep
+nnoremap <leader>ff :Rg<CR>           " Interactive search in files
+nnoremap <leader>fw :Rg <C-r><C-w><CR> " Search word under cursor
+nnoremap <leader>fo :copen<CR>        " Open quickfix (still useful)
+nnoremap <leader>fc :cclose<CR>       " Close quickfix
+
 " Window navigation
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -196,40 +206,62 @@ set grepprg=rg\ --vimgrep\ --smart-case\ --glob\ '!*.pdf'
 set grepformat=%f:%l:%c:%m      " Format for grep output
 
 " =============================================================================
+" FZF CONFIGURATION
+" =============================================================================
+
+" FZF installation check and runtime path
+set rtp+=/opt/homebrew/opt/fzf
+
+" Simple layout without preview to avoid issues
+let g:fzf_layout = { 'down': '~40%' }
+
+" Disable preview window initially (can be toggled with ctrl-/)
+let g:fzf_preview_window = []
+
+" Hide status line in FZF to reduce clutter
+autocmd! FileType fzf
+autocmd FileType fzf set laststatus=0 noshowmode noruler nonumber norelativenumber
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler number relativenumber
+
+" Simple command options for better performance
+let g:fzf_files_options = '--preview-window=hidden'
+let g:fzf_buffers_jump = 1
+
+" FZF colors (simplified)
+let g:fzf_colors = {
+  \ 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine'],
+  \ 'bg+':     ['bg', 'CursorLine'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword']
+  \ }
+
+" =============================================================================
 " PLUGIN MANAGEMENT
 " =============================================================================
 
 call plug#begin('~/.vim/plugged')
     Plug 'vimwiki/vimwiki'      " Personal wiki for Vim
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'     " FZF integration for Vim
 call plug#end()
 
 " =============================================================================
 " SEARCH MAPPINGS AND FUNCTIONS
 " =============================================================================
 
-" Custom search with automatic first result navigation
-nnoremap <Leader>ff :call CustomGrep()<CR>
-
-" Search word under cursor and open results
-nnoremap <Leader>fw :silent grep! <C-r><C-w> \| copen \| cfirst<CR>
-
-" Open search results window
-nnoremap <Leader>fo :copen<CR>
-
-" Navigate search results
-nnoremap <Leader>n :cnext<CR>zz     " Next result (centered)
-nnoremap <Leader>p :cprev<CR>zz     " Previous result (centered)
-
-" Close search results window
-nnoremap <Leader>fc :cclose<CR>
+" Navigate search results (for quickfix compatibility)
+nnoremap <Leader>n :cnext<CR>zz       " Next result (centered)
+nnoremap <Leader>p :cprev<CR>zz       " Previous result (centered)
 
 " =============================================================================
 " CUSTOM SEARCH FUNCTION
 " =============================================================================
 
-function! CustomGrep()
-    let pattern = input('🔍 Search in files: ')
-    if pattern != ''
-        execute 'copen | silent grep ' . pattern
-    endif
-endfunction
+" Note: CustomGrep replaced by FZF :Rg command
+" Use <leader>ff for interactive search instead
