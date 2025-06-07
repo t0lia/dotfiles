@@ -71,7 +71,7 @@ nnoremap <leader><leader> <C-^>
 nnoremap <leader>q :wall<bar>qall<CR>
 
 " Show buffer list and prompt for selection
-nnoremap <leader>b :ls<CR>:b 
+nnoremap <leader>b :ls<CR>:b<Space>
 
 " Navigate between buffers
 nnoremap <leader>bn :bnext<CR>      " Next buffer
@@ -160,7 +160,6 @@ set grepformat=%f:%l:%c:%m      " Format for grep output
 
 call plug#begin('~/.vim/plugged')
     Plug 'vimwiki/vimwiki'      " Personal wiki for Vim
-    Plug 'junegunn/fzf.vim'     " Fuzzy finder integration
 call plug#end()
 
 " =============================================================================
