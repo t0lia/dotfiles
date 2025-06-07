@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# Supported source file extensions
+#supported source file extensions
 SOURCE_EXTENSIONS=(
     # Programming languages
     "*.c" "*.cpp" "*.cc" "*.cxx" "*.h" "*.hpp"
@@ -30,6 +28,10 @@ SOURCE_EXTENSIONS=(
     
     # Documentation
     "*.md" "*.rst" "*.txt" "README*" "CHANGELOG*" "LICENSE*"
+    
+    # Dotfiles (files without extensions)
+    "vimrc" "bashrc" "zshrc" "gitconfig" "gitignore" "gitmessage"
+    "tmux.conf" "inputrc" "profile" "aliases"
 )
 
 # Directories to exclude

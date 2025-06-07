@@ -1,76 +1,125 @@
-set nocompatible
-syntax on
-filetype plugin indent on
+" =============================================================================
+" BASIC SETTINGS
+" =============================================================================
 
-" let mapleader = ","
-let mapleader = " "
+set nocompatible                " Disable Vi compatibility mode
+syntax on                       " Enable syntax highlighting
+filetype plugin indent on       " Enable filetype detection, plugins and indent
 
-set path+=**
-set wildignore+=*/node_modules/*,*/.git/*,*.pdf
+" =============================================================================
+" LEADER KEY
+" =============================================================================
 
-set relativenumber      " show relative line number
+let mapleader = " "             " Set leader key to spacebar
 
-set cursorline
-highlight CursorLine ctermbg=235 guibg=#464646 cterm=NONE gui=NONE
+" =============================================================================
+" FILE AND PATH SETTINGS
+" =============================================================================
 
-set shiftwidth=4
-set tabstop=4           " number of visual spaces per TAB
-set expandtab           " tabs are spaces
-set autoindent          " auto indent for new line
+set path+=**                    " Search recursively in subdirectories
+set wildignore+=*/node_modules/*,*/.git/*,*.pdf  " Ignore these patterns in file searches
 
-set showmatch           " higlight matching () {} []
-set clipboard=unnamed
+" =============================================================================
+" DISPLAY AND APPEARANCE
+" =============================================================================
 
-" SEARCH
-set incsearch           " search as character entered
-set hlsearch            " hightlight matches
+set relativenumber              " Show relative line numbers
+set cursorline                  " Highlight current line
+highlight CursorLine ctermbg=235 guibg=#464646 cterm=NONE gui=NONE  " Custom cursorline colors
 
-" set foldenable          " enable folding
-" set foldmethod=indent   " fold based in indent level
-set noswapfile          " not use swap file
+" =============================================================================
+" INDENTATION AND TABS
+" =============================================================================
 
+set shiftwidth=4                " Number of spaces for auto-indent
+set tabstop=4                   " Number of visual spaces per TAB
+set expandtab                   " Convert tabs to spaces
+set autoindent                  " Auto indent for new lines
 
-set conceallevel=2       " Прячет `**жирный**`, `*курсив*`, делает вид красивее
-set concealcursor=nc     " Применяет conceal в normal и command mode
-set linebreak            " Не ломает слова при переносе строк
-set wrap                 " Оборачивает длинные строки
+" =============================================================================
+" SEARCH SETTINGS
+" =============================================================================
 
-" Toggle previous buffer
+set incsearch                   " Search as characters are entered
+set hlsearch                    " Highlight search matches
+set showmatch                   " Highlight matching brackets () {} []
+
+" =============================================================================
+" TEXT DISPLAY AND WRAPPING
+" =============================================================================
+
+set conceallevel=2              " Hide markup for bold/italic text formatting
+set concealcursor=nc            " Apply conceal in normal and command mode
+set linebreak                   " Break lines at word boundaries
+set wrap                        " Wrap long lines
+
+" =============================================================================
+" SYSTEM INTEGRATION
+" =============================================================================
+
+set clipboard=unnamed           " Use system clipboard
+set noswapfile                  " Disable swap file creation
+
+" =============================================================================
+" BUFFER NAVIGATION
+" =============================================================================
+
+" Toggle between current and previous buffer
 nnoremap <leader><leader> <C-^>
 
-" nnoremap <leader>q :wqall<CR>
-" nnoremap <leader>q :confirm qall<CR>
+" Save all buffers and quit
 nnoremap <leader>q :wall<bar>qall<CR>
-" Show buffer list and choose
+
+" Show buffer list and prompt for selection
 nnoremap <leader>b :ls<CR>:b 
 
+" Navigate between buffers
+nnoremap <leader>bn :bnext<CR>      " Next buffer
+nnoremap <leader>bp :bprevious<CR>  " Previous buffer
 
-" Next / Previous buffer
-nnoremap <leader>bn :bnext<CR>
-nnoremap <leader>bp :bprevious<CR>
+" =============================================================================
+" HTML INDENTATION
+" =============================================================================
 
+let g:html_indent_script1 = "inc"    " Increase indent for script tags
+let g:html_indent_style1 = "inc"     " Increase indent for style tags
+let g:html_indent_inctags = "html,body,head"  " Tags that increase indent
 
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc"
-let g:html_indent_inctags = "html,body,head"
+" =============================================================================
+" CLIPBOARD OPERATIONS
+" =============================================================================
 
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+" System clipboard operations
+noremap <Leader>y "*y           " Yank to system clipboard
+noremap <Leader>p "*p           " Paste from system clipboard
+noremap <Leader>Y "+y           " Yank to selection clipboard
+noremap <Leader>P "+p           " Paste from selection clipboard
 
+" =============================================================================
+" FILETYPE SPECIFIC MAPPINGS
+" =============================================================================
+
+" Markdown: follow link under cursor with Ctrl+b
 autocmd FileType markdown nmap <C-b> gf
 
-" === Netrw: built-in file explorer ===
+" =============================================================================
+" NETRW FILE EXPLORER SETTINGS
+" =============================================================================
 
-let g:netrw_banner = 0                          " Disable the banner at the top
-let g:netrw_browse_split = 4                    " Open files in the previous window
-let g:netrw_altv = 1                            " Open vertical splits to the right
-let g:netrw_liststyle = 3                       " Use tree-style listing
-let g:netrw_winsize = 50                        " Set the window size for netrw
-let g:netrw_keepdir = 0                         " Automatically update netrw directory listing
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'  " Hide dotfiles (e.g. .git, .DS_Store)
-nnoremap <leader>e :Explore<CR>                 " Quick access: open netrw with <Leader>e
+let g:netrw_banner = 0          " Disable banner at top of netrw
+let g:netrw_browse_split = 4    " Open files in previous window
+let g:netrw_altv = 1            " Open vertical splits to the right
+let g:netrw_liststyle = 3       " Use tree-style listing
+let g:netrw_winsize = 50        " Set netrw window size
+let g:netrw_keepdir = 0         " Auto-update netrw directory listing
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'  " Hide dotfiles
+
+" Quick access to file explorer
+nnoremap <leader>e :Explore<CR>
+
+" =============================================================================
+" NETRW TOGGLE FUNCTION
+" =============================================================================
 
 function! ToggleNetrw()
   for w in range(1, winnr('$'))
@@ -91,37 +140,52 @@ function! ToggleNetrw()
   execute 'leftabove 40vsplit .'
 endfunction
 
+" Toggle netrw file explorer
 nnoremap <leader>1 :call ToggleNetrw()<CR>
+
+" In netrw, press Esc to move focus to main window
 autocmd FileType netrw nnoremap <buffer> <Esc> <C-w>l
 
-set grepprg=rg\ --vimgrep\ --smart-case\ --glob\ '!*.pdf'
+" =============================================================================
+" SEARCH TOOL CONFIGURATION
+" =============================================================================
 
-" === Plugins ===
+" Configure ripgrep as grep program
+set grepprg=rg\ --vimgrep\ --smart-case\ --glob\ '!*.pdf'
+set grepformat=%f:%l:%c:%m      " Format for grep output
+
+" =============================================================================
+" PLUGIN MANAGEMENT
+" =============================================================================
 
 call plug#begin('~/.vim/plugged')
-    Plug 'vimwiki/vimwiki'
-    Plug 'junegunn/fzf.vim'
+    Plug 'vimwiki/vimwiki'      " Personal wiki for Vim
+    Plug 'junegunn/fzf.vim'     " Fuzzy finder integration
 call plug#end()
 
+" =============================================================================
+" SEARCH MAPPINGS AND FUNCTIONS
+" =============================================================================
 
-
-
-
-
-
-" Поиск с автопереходом к первому результату
+" Custom search with automatic first result navigation
 nnoremap <Leader>ff :call CustomGrep()<CR>
-nnoremap <Leader>fw :silent grep! <C-r><C-w> \| copen \| cfirst<CR>
-nnoremap <Leader>fo :copen<CR>     " открыть результаты поиска
 
-" Навигация
-nnoremap <Leader>n :cnext<CR>zz
-nnoremap <Leader>p :cprev<CR>zz
+" Search word under cursor and open results
+nnoremap <Leader>fw :silent grep! <C-r><C-w> \| copen \| cfirst<CR>
+
+" Open search results window
+nnoremap <Leader>fo :copen<CR>
+
+" Navigate search results
+nnoremap <Leader>n :cnext<CR>zz     " Next result (centered)
+nnoremap <Leader>p :cprev<CR>zz     " Previous result (centered)
+
+" Close search results window
 nnoremap <Leader>fc :cclose<CR>
 
-" Настройка ripgrep
-set grepprg=rg\ --vimgrep\ --smart-case\ --follow
-set grepformat=%f:%l:%c:%m
+" =============================================================================
+" CUSTOM SEARCH FUNCTION
+" =============================================================================
 
 function! CustomGrep()
     let pattern = input('🔍 Search in files: ')
