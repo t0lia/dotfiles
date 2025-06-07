@@ -24,8 +24,6 @@ set wildignore+=*/node_modules/*,*/.git/*,*.pdf  " Ignore these patterns in file
 " =============================================================================
 
 set relativenumber              " Show relative line numbers
-set number                      " Show absolute line numbers
-set scrolloff=8                 " Keep 8 lines visible above/below cursor
 set cursorline                  " Highlight current line
 highlight CursorLine ctermbg=235 guibg=#464646 cterm=NONE gui=NONE  " Custom cursorline colors
 
@@ -60,7 +58,6 @@ set wrap                        " Wrap long lines
 " =============================================================================
 
 set clipboard=unnamed           " Use system clipboard
-set termguicolors               " Enable 24-bit RGB colors
 set noswapfile                  " Disable swap file creation
 
 " =============================================================================
@@ -69,9 +66,6 @@ set noswapfile                  " Disable swap file creation
 
 " Toggle between current and previous buffer
 nnoremap <leader><leader> <C-^>
-
-" Clear search highlighting
-nnoremap <leader>/ :nohlsearch<CR>
 
 " Save all buffers and quit
 nnoremap <leader>q :wall<bar>qall<CR>
@@ -82,15 +76,6 @@ nnoremap <leader>b :ls<CR>:b<Space>
 " Navigate between buffers
 nnoremap <leader>bn :bnext<CR>      " Next buffer
 nnoremap <leader>bp :bprevious<CR>  " Previous buffer
-
-" Quick save
-nnoremap <leader>w :w<CR>
-
-" Window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 " =============================================================================
 " HTML INDENTATION
@@ -113,11 +98,6 @@ noremap <Leader>P "+p           " Paste from selection clipboard
 " =============================================================================
 " FILETYPE SPECIFIC MAPPINGS
 " =============================================================================
-
-" Language-specific indentation
-autocmd FileType javascript,typescript setlocal ts=2 sw=2 sts=2
-autocmd FileType json,yaml setlocal ts=2 sw=2 sts=2
-autocmd FileType python setlocal ts=4 sw=4 sts=4
 
 " Markdown: follow link under cursor with Ctrl+b
 autocmd FileType markdown nmap <C-b> gf
