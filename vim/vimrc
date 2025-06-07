@@ -1,0 +1,131 @@
+set nocompatible
+syntax on
+filetype plugin indent on
+
+" let mapleader = ","
+let mapleader = " "
+
+set path+=**
+set wildignore+=*/node_modules/*,*/.git/*,*.pdf
+
+set relativenumber      " show relative line number
+
+set cursorline
+highlight CursorLine ctermbg=235 guibg=#464646 cterm=NONE gui=NONE
+
+set shiftwidth=4
+set tabstop=4           " number of visual spaces per TAB
+set expandtab           " tabs are spaces
+set autoindent          " auto indent for new line
+
+set showmatch           " higlight matching () {} []
+set clipboard=unnamed
+
+" SEARCH
+set incsearch           " search as character entered
+set hlsearch            " hightlight matches
+
+" set foldenable          " enable folding
+" set foldmethod=indent   " fold based in indent level
+set noswapfile          " not use swap file
+
+
+set conceallevel=2       " Прячет `**жирный**`, `*курсив*`, делает вид красивее
+set concealcursor=nc     " Применяет conceal в normal и command mode
+set linebreak            " Не ломает слова при переносе строк
+set wrap                 " Оборачивает длинные строки
+
+" Toggle previous buffer
+nnoremap <leader><leader> <C-^>
+
+" nnoremap <leader>q :wqall<CR>
+" nnoremap <leader>q :confirm qall<CR>
+nnoremap <leader>q :wall<bar>qall<CR>
+" Show buffer list and choose
+nnoremap <leader>b :ls<CR>:b 
+
+
+" Next / Previous buffer
+nnoremap <leader>bn :bnext<CR>
+nnoremap <leader>bp :bprevious<CR>
+
+
+let g:html_indent_script1 = "inc"
+let g:html_indent_style1 = "inc"
+let g:html_indent_inctags = "html,body,head"
+
+noremap <Leader>y "*y
+noremap <Leader>p "*p
+noremap <Leader>Y "+y
+noremap <Leader>P "+p
+
+autocmd FileType markdown nmap <C-b> gf
+
+" === Netrw: built-in file explorer ===
+
+let g:netrw_banner = 0                          " Disable the banner at the top
+let g:netrw_browse_split = 4                    " Open files in the previous window
+let g:netrw_altv = 1                            " Open vertical splits to the right
+let g:netrw_liststyle = 3                       " Use tree-style listing
+let g:netrw_winsize = 50                        " Set the window size for netrw
+let g:netrw_keepdir = 0                         " Automatically update netrw directory listing
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+'  " Hide dotfiles (e.g. .git, .DS_Store)
+nnoremap <leader>e :Explore<CR>                 " Quick access: open netrw with <Leader>e
+
+function! ToggleNetrw()
+  for w in range(1, winnr('$'))
+    let buf = winbufnr(w)
+    if getbufvar(buf, '&filetype') ==# 'netrw'
+      if winnr() != w
+        " Netrw is open, move focus to it
+        execute w . "wincmd w"
+        return
+      else
+        " Netrw is focused, close it
+        execute w . "wincmd c"
+        return
+      endif
+    endif
+  endfor
+  " Netrw not open — open it in a narrow left split
+  execute 'leftabove 40vsplit .'
+endfunction
+
+nnoremap <leader>1 :call ToggleNetrw()<CR>
+autocmd FileType netrw nnoremap <buffer> <Esc> <C-w>l
+
+set grepprg=rg\ --vimgrep\ --smart-case\ --glob\ '!*.pdf'
+
+" === Plugins ===
+
+call plug#begin('~/.vim/plugged')
+    Plug 'vimwiki/vimwiki'
+    Plug 'junegunn/fzf.vim'
+call plug#end()
+
+
+
+
+
+
+
+" Поиск с автопереходом к первому результату
+nnoremap <Leader>ff :call CustomGrep()<CR>
+nnoremap <Leader>fw :silent grep! <C-r><C-w> \| copen \| cfirst<CR>
+nnoremap <Leader>fo :copen<CR>     " открыть результаты поиска
+
+" Навигация
+nnoremap <Leader>n :cnext<CR>zz
+nnoremap <Leader>p :cprev<CR>zz
+nnoremap <Leader>fc :cclose<CR>
+
+" Настройка ripgrep
+set grepprg=rg\ --vimgrep\ --smart-case\ --follow
+set grepformat=%f:%l:%c:%m
+
+function! CustomGrep()
+    let pattern = input('🔍 Search in files: ')
+    if pattern != ''
+        execute 'copen | silent grep ' . pattern
+    endif
+endfunction
