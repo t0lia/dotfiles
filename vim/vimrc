@@ -27,6 +27,7 @@ set relativenumber              " Show relative line numbers
 set number                      " Show absolute line numbers
 set scrolloff=8                 " Keep 8 lines visible above/below cursor
 set cursorline                  " Highlight current line
+set colorcolumn=80              " Show vertical line at 80 characters
 highlight CursorLine ctermbg=235 guibg=#464646 cterm=NONE gui=NONE  " Custom cursorline colors
 
 " =============================================================================
@@ -59,8 +60,24 @@ set wrap                        " Wrap long lines
 " SYSTEM INTEGRATION
 " =============================================================================
 
+set wildmenu                    " Enable enhanced command completion
+set wildmode=list:longest,full  " Command completion behavior
+set laststatus=2                " Always show status line
+set statusline=%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P  " Status line format
 set clipboard=unnamed           " Use system clipboard
 set termguicolors               " Enable 24-bit RGB colors
+set undofile                    " Persistent undo
+set undodir=~/.vim/undo//       " Undo files directory
+set backupdir=~/.vim/backup//   " Backup files directory
+
+" Create directories if they don't exist
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "p", 0700)
+endif
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "p", 0700)
+endif
+
 set noswapfile                  " Disable swap file creation
 
 " =============================================================================
@@ -91,6 +108,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Move lines in visual mode
+vnoremap J :m '>+1<CR>gv=gv     " Move selection down
+vnoremap K :m '<-2<CR>gv=gv     " Move selection up
 
 " =============================================================================
 " HTML INDENTATION
